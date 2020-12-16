@@ -1,4 +1,4 @@
-class Missions < ActiveRecord::Base
+class Mission < ActiveRecord::Base
     belongs_to :user
-
-end
+    validates :title, :description, presence: true
+end 
