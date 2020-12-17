@@ -20,14 +20,23 @@ class UsersController < ApplicationController
     end
 
     post '/signup' do
-        if params[:username] == "" || params[:password] == ""
-            redirect "/signup"
+
+        user = User.new(params)
+        if user.save
+            session[:user_id] = user.id
+            redirect to "/missions"
         else
-            @user = User.new(params)
-            @user.save
-            session[:user_id] = @user.id
-            redirect "/missions"
+            @errors = user.errors.full_messages.join "-"
+            erb :"users/signup"
         end
+        # if params[:username] == "" || params[:password] == ""
+        #     redirect "/signup"
+        # else
+        #     @user = User.new(params)
+        #     @user.save
+        #     session[:user_id] = @user.id
+        #     redirect "/missions"
+        
     end
 
     get '/logout' do

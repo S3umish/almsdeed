@@ -17,7 +17,7 @@ class MissionsController < ApplicationController
     end
 
     post '/missions' do
-        @mission = current_user.missions.create(title: params[:title], description: params[:description])
+        @mission = current_user.missions.build(title: params[:title], description: params[:description])
         if @mission.save
             redirect "/missions"
         else
@@ -52,13 +52,12 @@ class MissionsController < ApplicationController
     #DELETE
 
     delete '/missions/:id/delete' do
-        mission = Mission.find_by(id: params[:id]) 
-        user = current_user(session)
-        mission.user
-        if mission && mission.user == current_user(session)
-            mission.destroy
+        @mission = Mission.find_by(id: params[:id]) 
+        if @mission && mission.user == current_user(session)
+            @mission.destroy
+            redirect "/missions"
         else
-        redirect to "/users/#{user.id}" 
+            redirect to "/" 
         end
     end 
 end
