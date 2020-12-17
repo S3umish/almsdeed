@@ -29,13 +29,6 @@ class UsersController < ApplicationController
             @errors = user.errors.full_messages.join "-"
             erb :"users/signup"
         end
-        # if params[:username] == "" || params[:password] == ""
-        #     redirect "/signup"
-        # else
-        #     @user = User.new(params)
-        #     @user.save
-        #     session[:user_id] = @user.id
-        #     redirect "/missions"
         
     end
 

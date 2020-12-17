@@ -1,13 +1,13 @@
 class MissionsController < ApplicationController
 
     #INDEX
-    get '/missions' do
+    get "/missions" do
         @missions = current_user.missions
         erb :"/missions/index"
     end
 
     #CREATE
-    get '/missions/new' do
+    get "/missions/new" do
         if logged_in?
             erb :"/missions/new"
         else
@@ -19,9 +19,10 @@ class MissionsController < ApplicationController
     post '/missions' do
         @mission = current_user.missions.build(title: params[:title], description: params[:description])
         if @mission.save
+            flash[:message] = "Craeted Mission Successfully."
             redirect "/missions"
         else
-            flash[:error] = "Please fill out all fields to create your mission."
+            flash[:error] = "Mission creation failed: Please fill out all fields to create your mission."
             redirect '/missions/new'
         end
     end 
@@ -52,10 +53,10 @@ class MissionsController < ApplicationController
     #DELETE
 
     delete '/missions/:id/delete' do
-        @mission = Mission.find_by(id: params[:id]) 
-        if @mission && mission.user == current_user(session)
-            @mission.destroy
-            redirect "/missions"
+        @mission = Mission.find(id: params[:id]) 
+        if @mission && mission.user == current_user
+           @mission.destroy
+           redirect "/missions"
         else
             redirect to "/" 
         end
