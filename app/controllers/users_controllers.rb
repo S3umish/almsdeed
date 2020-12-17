@@ -8,9 +8,10 @@ class UsersController < ApplicationController
         user = User.find_by(username: params[:username])
         if user && user.authenticate(params[:password])
             session[:user_id] = user.id
+            flash[:message] = "You have successfully logged in."
             redirect '/missions'
         else
-            flash[:error] = "Either username or password incorrect, please try again."
+            flash[:error] = "Either username or password is incorrect, please try again."
             redirect '/login'
         end
     end
@@ -20,16 +21,15 @@ class UsersController < ApplicationController
     end
 
     post '/signup' do
-
-        user = User.new(params)
-        if user.save
-            session[:user_id] = user.id
-            redirect to "/missions"
+        if params[:username] == "" || params[:password] == ""
+            flash[:error] = "Either username or password is empty, please try again."
+            redirect "/signup"
         else
-            @errors = user.errors.full_messages.join "-"
-            erb :"users/signup"
-        end
-        
+            @user = User.new(params)
+            @user.save
+            session[:user_id] = @user.id
+            redirect "/missions"
+        end  
     end
 
     get '/logout' do
