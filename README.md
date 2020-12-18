@@ -1,4 +1,4 @@
-Almsdeed is a Sinatra MVC app . It helps the User to track the "Volunteering Opportunities".
+Almsdeed is a Sinatra MVC app designed to track Missions created by its User.
 
 Instructions :
 
