@@ -1,11 +1,5 @@
-<h2>Your Missions</h2>
-
+<h2>My Missions</h2>
+ <a href= "/missions/new"><strong> Create a new mission.</strong></a><br><br>
     <% @missions.each do |mission| %>
         <li><a href="/missions/<%= mission.id %>"><%= mission.title %></a><br><br>
-        <label for="Completed">Completed:</label><input type="checkbox" id="Completed" name="Completed" value="Completed"/> 
-        <label for="In Progress">In Progress:</label><input type="checkbox" id="In Progress" name="In Progress" value="In Progress"/> 
-        <label for="Pending">Pending:</label><input type="checkbox" id="Pending" name="Pending" value="Pending"/> 
-        ></li><br><br>
-        <% end %>
-
-<a href="/missions/new">Create a new mission.</a><br><br>
+    <% end %>

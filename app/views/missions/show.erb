@@ -1,12 +1,14 @@
 <h3>Mission Details</h3>
 <p><b>Mission:</b> <%= @mission.title %></p>
-<><b>Description:</b> <%= @mission.description %></><br>
+<b>Description:</b> <%= @mission.description %></><br>
 
+<% if authorized_to_edit?(@mission)%>
 <form method="get" action="/missions/<%=@mission.id%>/edit">
 <input type="submit" value="Edit Mission">
 </form><br><br><br>
 
 <form method="POST" action="/missions/<%=@mission.id%>/delete">
     <input id="hidden" type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="Delete Mission">
+    <input type="submit" value="Delete This Mission">
 </form>
+<% end %>
