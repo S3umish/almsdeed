@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>AlmsDeed</title>
+        <title>Give It Back</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="/stylesheets/main.css">
         </head>
@@ -11,17 +11,22 @@
         <body>
             <div class="wrapper">
 
+            <% if flash[:message] %>
+                <h3 style="color:green;"><%= flash[:message] %></h3>
+            <% end %>
+
             <% if flash[:error] %>
-            <h2 style="color:red;"><%=flash[:error]%></h2>
+                <h3 style="color:red;"><%= flash[:error] %></h3>
             <% end %>
             
                 <%= yield %>
 
                 <footer>
-                    <small>&copy; 2020 <strong>Missions Tracker</strong>&nbsp; &diams;
-                    &nbsp;<% if logged_in? %>
-                    <a href="/missions">Your Missions</a> | 
-                    <a href="/missions/new">New Mission</a> | 
+                    <small>&copy; 2020 <strong>Almsdeed : Your Missions Tracker</strong>&nbsp; &diams;
+                    &nbsp;
+                    <% if logged_in? %>
+                    <a href="/missions"> My Missions</a>  |
+                    <a href="/missions/new">Create New Mission</a>  |
                     <a href="/logout">Logout</a>
                     <br></div>
                     <% end %></small>
