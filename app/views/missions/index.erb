@@ -1,5 +1,9 @@
 <h2>My Missions</h2>
+
  <a href= "/missions/new"><strong> Create a new mission.</strong></a><br><br>
+
+ <ul>
     <% @missions.each do |mission| %>
-        <li><a href="/missions/<%= mission.id %>"><%= mission.title %></a><br><br>
+        <h4 style="color:blue;"><a href="/missions/<%= mission.id %>"><%= mission.title %></a></h4><br>
     <% end %>
+ </ul>   

@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+     <br><br>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>Give It Back</title>
+        <title>MakeItHappen</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="/stylesheets/main.css">
         </head>
 
-        <body>
+        <body> 
             <div class="wrapper">
+           
 
             <% if flash[:message] %>
                 <h3 style="color:green;"><%= flash[:message] %></h3>
@@ -22,7 +24,7 @@
                 <%= yield %>
 
                 <footer>
-                    <small>&copy; 2020 <strong>Almsdeed : Your Missions Tracker</strong>&nbsp; &diams;
+                    <small>&copy; 2020 <strong>MakeItHappen: Your Missions Tracker</strong>&nbsp; &diams;
                     &nbsp;
                     <% if logged_in? %>
                     <a href="/missions"> My Missions</a>  |

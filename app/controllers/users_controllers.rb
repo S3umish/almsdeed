@@ -21,15 +21,23 @@ class UsersController < ApplicationController
     end
 
     post '/signup' do
-        if params[:username] == "" || params[:password] == ""
-            flash[:error] = "Either username or password is empty, please try again."
-            redirect "/signup"
+        user = User.new(params)
+        if user.save
+            session[:user_id]= @user.id
+            redirect "/users/#{@user.id}"
         else
-            @user = User.new(params)
-            @user.save
-            session[:user_id] = @user.id
-            redirect "/missions"
-        end  
+            @errors = user.errors.full_messages.to_sentence
+            erb :"/users/signup"
+        end
+        # if params[:username] == "" || params[:password] == ""
+        #     flash[:error] = "Either username or password is empty, please try again."
+        #     redirect "/signup"
+        # else
+        #     @user = User.new(params)
+        #     @user.save
+        #     session[:user_id] = @user.id
+        #     redirect "/missions"
+        # end  
     end
 
     get '/logout' do

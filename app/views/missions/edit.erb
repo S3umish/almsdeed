@@ -1,4 +1,5 @@
 <h3>Edit Mission</h3>
+<small style="color: red;"><%= @errors %></small>
 
 <form action="/missions/<%=@mission.id%>" method="POST">
     <input type="hidden" name="_method" value="PATCH">    

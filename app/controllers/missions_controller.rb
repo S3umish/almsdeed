@@ -3,6 +3,7 @@ class MissionsController < ApplicationController
     #INDEX
     get "/missions" do
         @missions = current_user.missions
+        # @missions = Mission.all
         erb :"/missions/index"
     end
 
@@ -19,9 +20,10 @@ class MissionsController < ApplicationController
     post '/missions' do
         @mission = current_user.missions.build(title: params[:title], description: params[:description])
         if @mission.save
-            flash[:message] = "Craeted Mission Successfully."
+            flash[:message] = "Created Mission Successfully."
             redirect "/missions"
         else
+            #@errors = missions.errors.full_messages.to_sentence
             flash[:error] = "Mission creation failed: Please fill out all fields to create your mission."
             redirect '/missions/new'
         end
@@ -35,7 +37,7 @@ class MissionsController < ApplicationController
 
     #UPDATE
     get '/missions/:id/edit' do
-        @mission = Mission.find(params[:id])
+        @mission = Mission.find_by_id(params[:id])
         if @mission.user_id == current_user.id
             erb :'/missions/edit'
         else
@@ -46,15 +48,19 @@ class MissionsController < ApplicationController
 
     patch '/missions/:id' do
         @mission = Mission.find_by_id(params[:id])
-        @mission.update(title: params[:title], description: params[:description])
-        redirect "/missions/#{@mission.id}"
+        if @mission.update(title: params[:title], description: params[:description])
+            redirect "/missions/#{@mission.id}"
+        else
+            @errors = @mission.errors.full_messages.to_sentence
+            erb :"missions/edit"
+        end
     end
 
     #DELETE
 
     delete '/missions/:id/delete' do
-        @mission = Mission.find(id: params[:id]) 
-        if @mission && mission.user == current_user
+        @mission = Mission.find(params[:id]) 
+        if @mission && @mission.user == current_user
            @mission.destroy
            redirect "/missions"
         else
