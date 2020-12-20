@@ -1,12 +1,22 @@
-<h3>Create A Mission</h3>
+<h2>Create A Mission</h2>
 <small style="color: red;"><%= @errors %></small>
 
 <form action="/missions" method="POST">
+    
     <label for="title">Mission Name: </label>
     <input type="text" name="title" id="title"><br><br>
+    
 
+  
     <label for="description">Mission Description: </label>
-    <input type="text" name="description" id="description"><br><br>
+    <input type="textarea" name="description" id="description"><br><br>
+    
+    <label for="startdate">Startdate: </label>
+    <input type="Datetime" name="startdate" id="startdate"><br><br>
+    
+    <label for="enddate">Enddate: </label>
+    <input type="Datetime" name="enddate" id="enddate"><br><br>
+
 
     <input type="submit" value="Create Mission">
 </form><br><br><br>
