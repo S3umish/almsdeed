@@ -2,10 +2,9 @@
 
 <p><b>Mission:</b> <%= @mission.title %></p>
 <p><b>Description:</b><%= @mission.description %></p><br>
-<p><small><b>Startdate:<%=@mission.startdate %></b></small></p>
-<p><small><b>Enddate:<%=@mission.enddate %></b></small></p>
-<br>
-<br>
+
+
+
 <% if authorized_to_edit?(@mission)%>
     <form method="get" action="/missions/<%=@mission.id%>/edit">
     <input type="submit" value="Edit Mission">

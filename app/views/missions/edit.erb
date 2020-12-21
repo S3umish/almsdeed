@@ -7,14 +7,14 @@
     <label for="title">Mission Name: </label>
     <input type="text" name="title" value="<%=@mission.title%>"><br><br>
 
-    <label for="description">Mission Description: </label>
-    <input type="text" name="description" value="<%=@mission.description%>"><br><br>
+    <h3>Mission Description</h3>
+    <textarea name="description" rows="6" cols="50" value="<%=@mission.description%>"></textarea><br><br>
 
-    <label for="startdate">Startdate: </label>
-    <input type="Datetime" name="startdate" value="<%=@mission.startdate%>">
-    
-    <label for="enddate">Enddate: </label>
-    <input type="Datetime" name="enddate" value="<%=@mission.enddate%>"><br><br>
+    <select>"status"
+    <option value="complete">Complete</option></option>
+    <option value="in progress">In Progress</option>
+    <option value="pending">Pending</option>
+    </select><br><br><br>
 
     <input type="submit" value="Update Mission">
 </form>

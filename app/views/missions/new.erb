@@ -3,20 +3,17 @@
 
 <form action="/missions" method="POST">
     
-    <label for="title">Mission Name: </label>
+    <label for="title">Title: </label>
     <input type="text" name="title" id="title"><br><br>
-    
 
-  
-    <label for="description">Mission Description: </label>
-    <input type="textarea" name="description" id="description"><br><br>
-    
-    <label for="startdate">Startdate: </label>
-    <input type="Datetime" name="startdate" id="startdate"><br><br>
-    
-    <label for="enddate">Enddate: </label>
-    <input type="Datetime" name="enddate" id="enddate"><br><br>
+    <h3>Mission Description</h3>
+    <textarea name="description" rows="6" cols="50"></textarea><br><br>
+
+    <label for="Startdate">Start Date: </label>
+    <input type="datetime" name="startdate" id="startdate"><br><br>
+    <label for="Enddate">End Date: </label>
+    <input type="datetime" name="enddate" id="enddate"><br><br>
 
 
     <input type="submit" value="Create Mission">
-</form><br><br><br>
+</form>
