@@ -4,8 +4,6 @@ html, body {
   }
   
   body {
-    background-image: absolute;
-    background-attachment: fixed;
     font-family: Sans-Serif;
     line-height: 18px;
   }

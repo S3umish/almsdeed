@@ -4,16 +4,17 @@
      <br><br>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title style="color:purple;">MakeItHappen</title>
+        <title>MakeItHappen</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="/stylesheets/main.css">
         
-        </head>
+    </head>
 
-        <body> 
-            <img src="images/mission.jpg" alt="mission" id="mission" style="width:150px;height:150px;" absolute>
+    <body> 
+    
+        <img src="images/mission.jpg" alt="mission" id="mission" style="width:150px;height:150px;" absolute>
             
-            <div class="wrapper">
+        <div class="wrapper">
           
             <% if flash[:message] %>
                 <h3 style="color:green;"><%= flash[:message] %></h3>
@@ -23,20 +24,20 @@
                 <h3 style="color:red;"><%= flash[:error] %></h3>
             <% end %>
             
-                <%= yield %>
+            <%= yield %>
 
-                <footer>
-                    <small>&copy; 2020 <strong>MakeItHappen: Your Missions Tracker</strong>&nbsp; &diams;
-                    &nbsp;
-                    <% if logged_in? %>
-                    <a href="/missions"> My Missions</a>  |
-                    <a href="/missions/new">Create New Mission</a>  |
-                    <a href="/logout">Logout</a>
-                    <br></div>
-                    <% end %></small>
-                </footer>
+            <footer>
+                <small>&copy; 2020 <strong>MakeItHappen: Your Missions Tracker</strong>&nbsp; &diams;
+                &nbsp;
+                <% if logged_in? %>
+                <a href="/missions"> My Missions</a>  |
+                <a href="/missions/new">Create New Mission</a>  |
+                <a href="/logout">Logout</a>
+                <br></div>
+                <% end %></small>
+            </footer>
 
-            </div>
+        </div>
 
-        </body>
+    </body>
 </html>

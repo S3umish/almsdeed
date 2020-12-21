@@ -1,9 +1,8 @@
+
 <h2>Mission Details</h2><br>
 
 <p><b>Mission:</b> <%= @mission.title %></p>
 <p><b>Description:</b><%= @mission.description %></p><br>
-
-
 
 <% if authorized_to_edit?(@mission)%>
     <form method="get" action="/missions/<%=@mission.id%>/edit">

@@ -1,13 +1,13 @@
 class MissionsController < ApplicationController
 
-    #INDEX
+    
     get "/missions" do
          @missions = current_user.missions
         # @missions = Mission.all
         erb :"/missions/index"
     end
 
-    #CREATE
+    
     get "/missions/new" do
         if logged_in?
             erb :"/missions/new"
@@ -29,13 +29,13 @@ class MissionsController < ApplicationController
         end
     end 
 
-    #READ
+    
     get '/missions/:id' do
         @mission = Mission.find(params[:id])
         erb :'/missions/show'
     end
 
-    #UPDATE
+    
     get '/missions/:id/edit' do
         @mission = Mission.find_by_id(params[:id])
         if @mission.user_id == current_user.id
@@ -56,7 +56,6 @@ class MissionsController < ApplicationController
         end
     end
 
-    #DELETE
 
     delete '/missions/:id/delete' do
         @mission = Mission.find(params[:id]) 
