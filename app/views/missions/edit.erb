@@ -10,6 +10,12 @@
     <h3>Mission Description</h3>
     <textarea name="description" rows="6" cols="50" value="<%=@mission.description%>"></textarea><br><br>
 
+    <label for="startdate">Startdate: </label>
+    <input type="datetime" name="startdate" value="<%=@mission.startdate%>"><br><br>
+
+    <label for="enddate">Enddate: </label>
+    <input type="datetime" name="enddate" value="<%=@mission.enddate%>"><br><br>
+
     <select>"status"
     <option value="complete">Complete</option></option>
     <option value="in progress">In Progress</option>

@@ -18,7 +18,7 @@ class MissionsController < ApplicationController
     end
 
     post '/missions' do
-        @mission = current_user.missions.build(title: params[:title], description: params[:description])
+        @mission = current_user.missions.build(title: params[:title], description: params[:description], startdate: params[:startdate], enddate: params[:enddate])
         if @mission.save
             flash[:message] = "Created Mission Successfully."
             redirect "/missions"
@@ -48,7 +48,7 @@ class MissionsController < ApplicationController
 
     patch '/missions/:id' do
         @mission = Mission.find_by_id(params[:id])
-        if @mission.update(title: params[:title], description: params[:description])
+        if @mission.update(title: params[:title], description: params[:description], startdate: params[:startdate], enddate: params[:enddate])
             redirect "/missions/#{@mission.id}"
         else
             @errors = @mission.errors.full_messages.to_sentence

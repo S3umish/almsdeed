@@ -3,6 +3,8 @@
 
 <p><b>Mission:</b> <%= @mission.title %></p>
 <p><b>Description:</b><%= @mission.description %></p><br>
+<b>Startdate:</b> <%= @mission.startdate %></><br>
+<b>Enddate:</b> <%= @mission.enddate %></><br>
 
 <% if authorized_to_edit?(@mission)%>
     <form method="get" action="/missions/<%=@mission.id%>/edit">
