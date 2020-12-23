@@ -1,20 +1,20 @@
 <h3>Edit Mission</h3>
 <small style="color: red;"><%= @errors %></small>
 
-<form action="/missions/<%=@mission.id%>" method="POST">
+<form method="Post" action="/missions/<%=@mission.id%>/edit">
     <input type="hidden" name="_method" value="PATCH">    
 
-    <label for="title">Mission Name: </label>
+    <label for="title">Mission Title: </label>
     <input type="text" name="title" value="<%=@mission.title%>"><br><br>
 
-    <h3>Mission Description</h3>
-    <textarea name="description" rows="6" cols="50" value="<%=@mission.description%>"></textarea><br><br>
+    <label for= "Mission Description">Mission Description:</label></label>
+    <input type="textarea"rows="6" cols="50" name="mission[description]"  value="<%=@mission.description%>"><br><br>
 
     <label for="startdate">Startdate: </label>
-    <input type="datetime" name="startdate" value="<%=@mission.startdate%>"><br><br>
+    <input type="datetime" name="mission[startdate]" value="<%=@mission.startdate%>"><br><br>
 
     <label for="enddate">Enddate: </label>
-    <input type="datetime" name="enddate" value="<%=@mission.enddate%>"><br><br>
+    <input type="datetime" name="mission[enddate]" value="<%=@mission.enddate%>"><br><br>
 
     <select>"status"
     <option value="complete">Complete</option></option>

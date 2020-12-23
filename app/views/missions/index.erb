@@ -1,10 +1,9 @@
 <h2>My Missions</h2>
+<small style="color: red;"><%= @errors %></small>
 
- <a href= "/missions/new"><strong> Create a new mission.</strong></a><br>
+<a href= "/missions/new"><strong> Create a new mission.</strong></a><br>
 
- <dl>
-        <p><% @missions.each do |mission| %></p>
-
-        <br><a href="/missions/<%= mission.id %>"><%= mission.title %></a><br>
+<ol><% @missions.each do |mission| %>
+        <li><a href="/missions/<%= mission.id %>"><%= mission.title %></a></li>
     <% end %>
- </dl>   
+</ol>   

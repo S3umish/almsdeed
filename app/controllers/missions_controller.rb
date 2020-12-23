@@ -2,7 +2,7 @@ class MissionsController < ApplicationController
 
     
     get "/missions" do
-         @missions = current_user.missions
+        @missions = current_user.missions
         # @missions = Mission.all
         erb :"/missions/index"
     end
@@ -23,42 +23,43 @@ class MissionsController < ApplicationController
             flash[:message] = "Created Mission Successfully."
             redirect "/missions"
         else
-            #@errors = missions.errors.full_messages.to_sentence
-            flash[:error] = "Mission creation failed: Please fill out all fields to create your mission."
+            @errors = missions.errors.full_messages.to_sentence
+            # flash[:error] = "Mission creation failed: Please fill out all fields to create your mission."
             redirect '/missions/new'
         end
     end 
 
     
     get '/missions/:id' do
-        @mission = Mission.find(params[:id])
+        @mission = Mission.find_by(id: params[:id])
         erb :'/missions/show'
     end
 
     
     get '/missions/:id/edit' do
-        @mission = Mission.find_by_id(params[:id])
+        @mission = Mission.find_by(id: params[:id])
         if @mission.user_id == current_user.id
             erb :'/missions/edit'
         else
-            flash[:error] = "You are not authorized to edit this mission."
+            @errors = missions.errors.full_messages.to_sentence
+            # flash[:error] = "You are not authorized to edit this mission."
             redirect "/missions"
         end
     end
 
-    patch '/missions/:id' do
-        @mission = Mission.find_by_id(params[:id])
-        if @mission.update(title: params[:title], description: params[:description], startdate: params[:startdate], enddate: params[:enddate])
+    patch '/missions/:id/edit' do
+        @mission = Mission.find_by(id: params[:id])
+        if @mission.update(params[:mission])
             redirect "/missions/#{@mission.id}"
         else
-            @errors = @mission.errors.full_messages.to_sentence
-            erb :"missions/edit"
+            @errors = @missions.errors.full_messages.to_sentence
+            erb :"missions/show"
         end
     end
 
 
     delete '/missions/:id/delete' do
-        @mission = Mission.find(params[:id]) 
+        @mission = Mission.find_by(id: params[:id]) 
         if @mission && @mission.user == current_user
            @mission.destroy
            redirect "/missions"
