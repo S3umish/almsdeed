@@ -2,8 +2,8 @@ class MissionsController < ApplicationController
 
     
     get "/missions" do
-        @missions = current_user.missions
-        # @missions = Mission.all
+        # @missions = current_user.missions
+        @missions = Mission.all
         erb :"/missions/index"
     end
 

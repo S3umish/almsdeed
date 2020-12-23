@@ -7,4 +7,5 @@ end
 use Rack::MethodOverride
 use UsersController
 use MissionsController
+use SessionsController
 run ApplicationController
